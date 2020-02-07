@@ -66,7 +66,7 @@ def show_box(im, boxes, show=True, save_path=None):
 
 if __name__ == '__main__':
     # You should specify the dataset_dir and save_dir according to your own dataset's directory
-    dataset_dir = '.'
+    dataset_dir = '/workspace/data/RESIDE/RTTS'
     save_dir = './visualize_gt_boxes'
     dest_files = os.path.join(dataset_dir, 'ImageSets', 'Main', 'test.txt')
     im_dir = os.path.join(dataset_dir, 'JPEGImages')
