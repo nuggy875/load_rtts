@@ -9,14 +9,21 @@ class RTTS_Dataset(data.Dataset):
         self.dest_files = os.path.join(dataset_dir, 'ImageSets', 'Main', 'test.txt')
         self.im_dir = os.path.join(dataset_dir, 'JPEGImages')
         self.anno_dir = os.path.join(dataset_dir, 'Annotations')
+        with open(self.dest_files, 'r') as f:
+            names = f.readlines()
+        self.names = [im.strip() for im in names]
+        print(self.names)
 
     def __getitem__(self, index):
         print('test')
 
     def __len__(self):
-        return len(self.im_dir)
+        return len(self.names)
 
 
-data_path = '/workspace/data'
-
-RTTS_train_loader=DataLoader(dataset=RESIDE_Dataset(data_path+'/RESIDE/RTTS', train=True, size=input_size), batch_size=batch_size, shuffle=True)
+if __name__ == "__main__":
+    input_size = 800
+    batch_size = 2
+        
+    data_path = '/workspace/data'
+    RTTS_train_loader=DataLoader(dataset=RTTS_Dataset(data_path+'/RESIDE/RTTS', train=True, size=input_size), batch_size=batch_size, shuffle=True)
