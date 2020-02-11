@@ -34,7 +34,6 @@ def parse_annotation(path):
         difficult = int(obj.find('difficult').text) == 1
         if FILTER_DIFFICULT:
             if not difficult:
-                # boxes.append({'cls': cls, 'box': box})
                 boxes.append(box)
         else:
             boxes.append(box)
