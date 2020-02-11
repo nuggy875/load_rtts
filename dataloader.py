@@ -16,6 +16,7 @@ class RTTS_Dataset(data.Dataset):
 
     def __getitem__(self, index):
         print('test')
+        print('test2')
 
     def __len__(self):
         return len(self.names)
