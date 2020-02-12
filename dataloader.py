@@ -58,26 +58,25 @@ class RTTS_Dataset(data.Dataset):
         anno_path = osp.join(self.anno_dir, (img_name+'.xml'))
         bbox = parse_annotation(anno_path)
         image=Image.open(img_path)
-
+        # np to tensor
         img_np = np.array(image)
         bbox_np = np.array(bbox)
-
         img_tensor = torch.from_numpy(img_np)
         bbox_tensor = torch.from_numpy(bbox_np)
 
         return img_tensor, bbox_tensor
 
+
     def __len__(self):
         return len(self.names)
+
 
     def collate_fn(self, batch):
         images = list()
         bboxes = list()
-
         for b in batch:
             images.append(b[0])
             bboxes.append(b[1])
-
         images = torch.stack(images, dim=0)
         bboxes = torch.stack(bboxes, dim=0)
         return images, bboxes
