@@ -58,9 +58,10 @@ class RTTS_Dataset(data.Dataset):
         anno_path = osp.join(self.anno_dir, (img_name+'.xml'))
         bbox = parse_annotation(anno_path)
         image=Image.open(img_path)
-        # np to tensor
+        # to np
         img_np = np.array(image)
         bbox_np = np.array(bbox)
+        # to tensor
         img_tensor = torch.from_numpy(img_np)
         bbox_tensor = torch.from_numpy(bbox_np)
 
