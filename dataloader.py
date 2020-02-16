@@ -9,11 +9,11 @@ from PIL import Image
 
 FILTER_DIFFICULT = True
 class_ = {
-    'person':1,
-    'car':2,
-    'bus':3,
-    'bicycle':4,
-    'motorbike':5
+    'person':1.0,
+    'car':2.0,
+    'bus':3.0,
+    'bicycle':4.0,
+    'motorbike':5.0
 }
 
 
