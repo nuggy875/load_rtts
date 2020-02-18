@@ -7,13 +7,14 @@ import torch.utils.data as data
 from torch.utils.data import DataLoader
 from PIL import Image
 
+
 FILTER_DIFFICULT = True
 class_ = {
-    'person':1,
-    'car':2,
-    'bus':3,
-    'bicycle':4,
-    'motorbike':5
+    'person':1.0,
+    'car':2.0,
+    'bus':3.0,
+    'bicycle':4.0,
+    'motorbike':5.0
 }
 
 
@@ -86,13 +87,10 @@ class RTTS_Dataset(data.Dataset):
 if __name__ == "__main__":
     input_size = 800
     batch_size = 1
-        
     data_path = '/workspace/data'
     dataset = RTTS_Dataset(data_path+'/RESIDE/RTTS', format='.png', train=True, size=input_size)
     RTTS_train_loader=DataLoader(dataset=dataset, batch_size=batch_size, 
                                 collate_fn=dataset.collate_fn, shuffle=False)
-    print('data loading compelete')
-    
     #iters_per_epoch = int(len(RTTS_train_loader)/batch_size)
     iters_per_epoch = int(len(RTTS_train_loader))
     print('Total ITERS: ', iters_per_epoch)
