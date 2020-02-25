@@ -42,7 +42,7 @@ def parse_annotation(path):
 
 
 class RTTS_Dataset(data.Dataset):
-    def __init__(self, dataset_dir, format, train, size):
+    def __init__(self, dataset_dir, format, train):
         super(RTTS_Dataset, self).__init__()
         self.dest_files = osp.join(dataset_dir, 'ImageSets', 'Main', 'test.txt')
         self.im_dir = osp.join(dataset_dir, 'JPEGImages')
@@ -85,10 +85,9 @@ class RTTS_Dataset(data.Dataset):
 
 
 if __name__ == "__main__":
-    input_size = 800
     batch_size = 1
     data_path = '/workspace/data'
-    dataset = RTTS_Dataset(data_path+'/RESIDE/RTTS', format='.png', train=True, size=input_size)
+    dataset = RTTS_Dataset(data_path+'/RESIDE/RTTS', format='.png', train=True)
     RTTS_train_loader=DataLoader(dataset=dataset, batch_size=batch_size, 
                                 collate_fn=dataset.collate_fn, shuffle=False)
     #iters_per_epoch = int(len(RTTS_train_loader)/batch_size)
