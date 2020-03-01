@@ -86,7 +86,7 @@ class RTTS_Dataset(data.Dataset):
 
 if __name__ == "__main__":
     batch_size = 1
-    data_path = '/workspace/data'
+    data_path = '/data'
     dataset = RTTS_Dataset(data_path+'/RESIDE/RTTS', format='.png', train=True)
     RTTS_train_loader=DataLoader(dataset=dataset, batch_size=batch_size, 
                                 collate_fn=dataset.collate_fn, shuffle=False)
