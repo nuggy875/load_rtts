@@ -17,6 +17,7 @@ SHOW = True
 COLORMAP = {'person': 'r', 'car': 'c', 'bus': 'm', 
             'bicycle': 'y', 'motorbike': 'g'}
 
+
 def parse_annotation(path):
     assert(os.path.exists(path)), \
         'Annotation: {} does not exist'.format(path)
@@ -38,6 +39,7 @@ def parse_annotation(path):
         else:
             boxes.append({'cls': cls, 'box': box})
     return boxes
+
 
 def show_box(im, boxes, show=True, save_path=None):
     im = im[:, :, (2, 1, 0)]
@@ -66,7 +68,7 @@ def show_box(im, boxes, show=True, save_path=None):
 
 if __name__ == '__main__':
     # You should specify the dataset_dir and save_dir according to your own dataset's directory
-    dataset_dir = '/workspace/data/RESIDE/RTTS'
+    dataset_dir = '/data/RESIDE/RTTS'
     save_dir = './visualize_gt_boxes'
     dest_files = os.path.join(dataset_dir, 'ImageSets', 'Main', 'test.txt')
     im_dir = os.path.join(dataset_dir, 'JPEGImages')
